@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Sonder — Where Answers Find Each Other</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ═══════════════════════════════════════════════
+       SPLASH
+  ═══════════════════════════════════════════════ -->
+  <div class="screen active" id="screen-splash">
+    <div class="splash-bg">
+      <div class="splash-orbs">
+        <div class="orb o1"></div>
+        <div class="orb o2"></div>
+        <div class="orb o3"></div>
+      </div>
+      <div class="splash-float-cards">
+        <div class="sfc sfc1"><div class="sfc-inner">☽</div></div>
+        <div class="sfc sfc2"><div class="sfc-inner">✦</div></div>
+        <div class="sfc sfc3"><div class="sfc-inner">◈</div></div>
+        <div class="sfc sfc4"><div class="sfc-inner">✧</div></div>
+      </div>
+      <div class="splash-content">
+        <div class="splash-logo">
+          <svg class="logo-ring" width="72" height="72" viewBox="0 0 72 72">
+            <circle cx="36" cy="36" r="33" fill="none" stroke="#D4A853" stroke-width="1.5"/>
+            <circle cx="36" cy="36" r="24" fill="none" stroke="#D4A853" stroke-width="0.6"/>
+            <text x="36" y="43" text-anchor="middle" font-size="24" fill="#D4A853" font-family="serif">◈</text>
+          </svg>
+          <h1 class="app-name">Sonder</h1>
+          <p class="app-tagline">Where answers find each other</p>
+        </div>
+        <div class="splash-cta">
+          <button class="btn-primary btn-lg" onclick="showScreen('screen-onboarding')">Begin your journey</button>
+          <button class="btn-ghost" onclick="showScreen('screen-auth'); setAuthMode('login')">Sign in</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       ONBOARDING
+  ═══════════════════════════════════════════════ -->
+  <div class="screen" id="screen-onboarding">
+    <div class="ob-container">
+      <div class="ob-slides" id="ob-slides">
+
+        <!-- Slide 1 -->
+        <div class="ob-slide" data-slide="0">
+          <div class="ob-visual">
+            <div class="ob-card-fan-preview">
+              <div class="obcp obcp1">
+                <div class="obcp-corner tl">✦</div>
+                <div class="obcp-corner tr">✦</div>
+                <p class="obcp-q">What makes you feel most alive?</p>
+                <p class="obcp-a">"Dancing in the rain when no one's watching…"</p>
+                <div class="obcp-corner bl">✦</div>
+                <div class="obcp-corner br">✦</div>
+              </div>
+              <div class="obcp obcp2">
+                <div class="obcp-corner tl">✦</div>
+                <div class="obcp-corner tr">✦</div>
+                <p class="obcp-q">Describe your perfect Sunday.</p>
+                <p class="obcp-a">"Slow coffee, a good book, absolutely no plans…"</p>
+                <div class="obcp-corner bl">✦</div>
+                <div class="obcp-corner br">✦</div>
+              </div>
+              <div class="obcp obcp3">
+                <div class="obcp-corner tl">✦</div>
+                <div class="obcp-corner tr">✦</div>
+                <p class="obcp-q">What's your favourite time of day?</p>
+                <p class="obcp-a">"Golden hour — everything looks lit from within…"</p>
+                <div class="obcp-corner bl">✦</div>
+                <div class="obcp-corner br">✦</div>
+              </div>
+            </div>
+          </div>
+          <div class="ob-text">
+            <div class="ob-emoji">🃏</div>
+            <h2>Your story, one card at a time</h2>
+            <p>Answer questions and build your unique deck. Each answer is a window into who you really are.</p>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="ob-slide" data-slide="1">
+          <div class="ob-visual">
+            <div class="ob-discover-preview">
+              <div class="odp-card">
+                <div class="odp-user">
+                  <img src="https://i.pravatar.cc/40?img=5" alt="Sofia">
+                  <div>
+                    <strong>Sofia M.</strong>
+                    <span>Barcelona</span>
+                  </div>
+                </div>
+                <p class="odp-q">What's something small that brings you joy every day?</p>
+                <p class="odp-a">"The smell of coffee at 7am, and the way light filters through curtains…"</p>
+                <div class="odp-pick-row">
+                  <button class="odp-pick-btn active">✦ Picked!</button>
+                </div>
+              </div>
+              <div class="odp-arrow">↓ pick answers that move you</div>
+            </div>
+          </div>
+          <div class="ob-text">
+            <div class="ob-emoji">✦</div>
+            <h2>Pick answers that move you</h2>
+            <p>Browse answers from people around the world. When something resonates, pick it — you'll be one step closer to a match.</p>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="ob-slide" data-slide="2">
+          <div class="ob-visual">
+            <div class="ob-match-preview">
+              <div class="omp-ring">
+                <img src="https://i.pravatar.cc/72?img=12" class="omp-av omp-av1" alt="You">
+                <div class="omp-center-icon">◈</div>
+                <img src="https://i.pravatar.cc/72?img=5" class="omp-av omp-av2" alt="Match">
+              </div>
+              <div class="omp-sparks">
+                <span class="osp s1">✦</span>
+                <span class="osp s2">✧</span>
+                <span class="osp s3">✦</span>
+                <span class="osp s4">✧</span>
+                <span class="osp s5">✦</span>
+                <span class="osp s6">✧</span>
+              </div>
+              <div class="omp-label">Kindred Connection</div>
+            </div>
+          </div>
+          <div class="ob-text">
+            <div class="ob-emoji">💫</div>
+            <h2>Kindred spirits find each other</h2>
+            <p>When you both pick each other's answers, you match. Then chat and explore each other's full deck.</p>
+          </div>
+        </div>
+
+      </div><!-- /ob-slides -->
+
+      <div class="ob-nav">
+        <div class="ob-dots">
+          <div class="ob-dot active" onclick="goToSlide(0)"></div>
+          <div class="ob-dot" onclick="goToSlide(1)"></div>
+          <div class="ob-dot" onclick="goToSlide(2)"></div>
+        </div>
+        <button class="btn-primary" id="ob-btn" onclick="obNext()">Next</button>
+        <button class="btn-ghost btn-sm" onclick="showScreen('screen-auth')">Skip</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       AUTH
+  ═══════════════════════════════════════════════ -->
+  <div class="screen" id="screen-auth">
+    <div class="auth-wrap">
+      <div class="auth-top">
+        <button class="back-btn" onclick="showScreen('screen-splash')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <div class="auth-logo-text">◈ Sonder</div>
+        <div style="width:22px"></div>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tab-signup" onclick="setAuthMode('signup')">Create Account</button>
+        <button class="auth-tab" id="tab-login" onclick="setAuthMode('login')">Sign In</button>
+      </div>
+
+      <!-- Sign Up -->
+      <div class="auth-form" id="form-signup">
+        <div class="input-row">
+          <span class="input-ico">👤</span>
+          <input type="text" class="form-input" placeholder="Your name">
+        </div>
+        <div class="input-row">
+          <span class="input-ico">✉️</span>
+          <input type="email" class="form-input" placeholder="Email address">
+        </div>
+        <div class="input-row">
+          <span class="input-ico">🔑</span>
+          <input type="password" class="form-input" placeholder="Password">
+        </div>
+        <button class="btn-primary btn-full" onclick="showScreen('screen-setup')">Create my deck ✦</button>
+        <div class="auth-or"><span>or continue with</span></div>
+        <div class="social-row">
+          <button class="social-btn" onclick="showScreen('screen-setup')">
+            <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+            Google
+          </button>
+          <button class="social-btn" onclick="showScreen('screen-setup')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </button>
+        </div>
+      </div>
+
+      <!-- Login -->
+      <div class="auth-form hidden" id="form-login">
+        <div class="input-row">
+          <span class="input-ico">✉️</span>
+          <input type="email" class="form-input" placeholder="Email address">
+        </div>
+        <div class="input-row">
+          <span class="input-ico">🔑</span>
+          <input type="password" class="form-input" placeholder="Password">
+        </div>
+        <button class="btn-primary btn-full" onclick="showScreen('screen-home')">Sign in ✦</button>
+        <div class="forgot-link"><a href="#">Forgot password?</a></div>
+      </div>
+
+      <div class="auth-footer">
+        <p>By continuing you agree to our <a href="#">Terms</a> &amp; <a href="#">Privacy</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       PROFILE SETUP
+  ═══════════════════════════════════════════════ -->
+  <div class="screen" id="screen-setup">
+    <div class="setup-wrap">
+      <div class="setup-head">
+        <div class="setup-deck-label">Building your deck</div>
+        <div class="setup-progress-row">
+          <div class="setup-bar"><div class="setup-fill" id="setup-fill"></div></div>
+          <span class="setup-count" id="setup-count">1 / 5</span>
+        </div>
+      </div>
+      <p class="setup-sub">These first answers form the foundation of your deck. Others will discover you through them.</p>
+
+      <div class="setup-card-stage" id="setup-card-stage">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="setup-answer-area">
+        <textarea class="answer-ta" id="setup-ta" placeholder="Write your answer… there are no wrong answers here." rows="4"></textarea>
+        <div class="setup-btns">
+          <button class="btn-ghost btn-sm" onclick="setupSkip()">Skip</button>
+          <button class="btn-primary" onclick="setupNext()">Next →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       HOME — MAIN DISCOVERY
+  ═══════════════════════════════════════════════ -->
+  <div class="screen" id="screen-home">
+    <div class="home-wrap">
+
+      <!-- Header -->
+      <div class="home-hdr">
+        <div class="home-logo-mark">◈</div>
+        <div class="picks-chip" id="picks-chip">
+          <span class="pc-icon">✦</span>
+          <span id="picks-num">5</span>
+          <span class="pc-label">picks left</span>
+        </div>
+        <button class="notif-btn" onclick="showScreen('screen-matches')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <div class="notif-dot"></div>
+        </button>
+      </div>
+
+      <!-- Card Wheel -->
+      <div class="wheel-wrapper" id="wheel-wrapper">
+        <div class="card-wheel" id="card-wheel"></div>
+        <div class="swipe-hint" id="swipe-hint">← swipe to explore →</div>
+      </div>
+
+      <!-- Active Card Info -->
+      <div class="active-info" id="active-info">
+        <p class="ai-question" id="ai-q">What's something small that brings you joy every day?</p>
+        <div class="ai-user-row">
+          <img class="ai-avatar" id="ai-avatar" src="" alt="User">
+          <div class="ai-user-text">
+            <div class="ai-name" id="ai-name">Sofia M.</div>
+            <div class="ai-loc" id="ai-loc">📍 Barcelona</div>
+          </div>
+          <button class="pick-btn" id="pick-btn" onclick="pickCard()">
+            <span>✦</span> Pick
+          </button>
+        </div>
+        <p class="ai-excerpt" id="ai-excerpt">"The smell of coffee in the morning and the way light filters through my curtains…"</p>
+        <button class="read-more-btn" onclick="openCardDetail()">Read full answer ↓</button>
+      </div>
+
+    </div>
+    <div class="bottom-nav">
+      <button class="nav-btn active" onclick="showScreen('screen-home')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Discover</span></button>
+      <button class="nav-btn" onclick="showScreen('screen-categories')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Decks</span></button>
+      <button class="nav-btn" onclick="showScreen('screen-matches')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span>Kindred</span><div class="nav-badge">2</div></button>
+      <button class="nav-btn" onclick="showScreen('screen-profile')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>My Deck</span></button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       CARD DETAIL
+  ═══════════════════════════════════════════════ -->
+  <div class="screen" id="screen-card-detail">
+    <div class="cd-wrap">
+      <div class="cd-hdr">
+        <button class="back-btn" onclick="showScreen('screen-home')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <span class="cd-cat-label" id="cd-cat">☀️ Getting to Know You</span>
+        <div style="width:22px"></div>
+      </div>
+
+      <div class="cd-card-stage">
+        <div class="tarot-card tarot-lg" id="detail-tarot">
+          <div class="tc-corner tc-tl">✦</div>
+          <div class="tc-corner tc-tr">✦</div>
+          <div class="tc-cat-icon" id="dtc-icon">☀️</div>
+          <p class="tc-question" id="dtc-q">What's something small that brings you joy every day?</p>
+          <div class="tc-rule"></div>
+          <p class="tc-answer" id="dtc-a">"The smell of coffee in the morning and the way light filters through my curtains. Also, the moment just before someone laughs at a joke — that split second of recognition."</p>
+          <div class="tc-user">
+            <img id="dtc-avatar" src="https://i.pravatar.cc/48?img=5" alt="User">
+            <div>
+              <div class="tc-user-name" id="dtc-name">Sofia M.</div>
+              <div class="tc-user-loc" id="dtc-loc">📍 Barcelona, Spain</div>
+            </div>
+          </div>
+          <div class="tc-corner tc-bl">✦</div>
+          <div class="tc-corner tc-br">✦</div>
+        </div>
+      </div>
+
+      <div class="cd-actions">
+        <button class="cda-btn cda-pass" onclick="showScreen('screen-home')">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          <span>Pass</span>
+        </button>
+        <button class="cda-btn cda-profile" onclick="showScreen('screen-user-profile')">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Profile</span>
+        </button>
+        <button class="cda-btn cda-pick" id="cda-pick" onclick="pickFromDetail()">
+          <span style="font-size:26px;line-height:1">✦</span>
+          <span>Pick!</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       MATCH ALERT (overlay)
+  ═══════════════════════════════════════════════ -->
+  <div class="screen overlay hidden" id="screen-match-alert">
+    <div class="match-overlay-bg">
+      <div class="match-burst">
+        <div class="match-sparks-ring" id="match-sparks">
+          <span class="msr msr1">✦</span><span class="msr msr2">◈</span>
+          <span class="msr msr3">✦</span><span class="msr msr4">◈</span>
+          <span class="msr msr5">✦</span><span class="msr msr6">◈</span>
+          <span class="msr msr7">✦</span><span class="msr msr8">◈</span>
+        </div>
+        <div class="match-avs">
+          <img src="https://i.pravatar.cc/80?img=12" class="mav mav-me" alt="Me">
+          <div class="mav-ring">◈</div>
+          <img src="https://i.pravatar.cc/80?img=5" class="mav mav-them" id="match-av" alt="Match">
+        </div>
+      </div>
+      <div class="match-copy">
+        <div class="match-kw-label">✦ Kindred Connection ✦</div>
+        <h2 class="match-title" id="match-title">You & Sofia match!</h2>
+        <p class="match-sub">You both found something in each other's words.</p>
+      </div>
+      <div class="match-btns">
+        <button class="btn-primary" onclick="showScreen('screen-chat')">Start chatting</button>
+        <button class="btn-ghost" onclick="closeMatchAlert()">Continue exploring</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       MATCHES LIST
+  ═══════════════════════════════════════════════ -->
+  <div class="screen" id="screen-matches">
+    <div class="matches-wrap">
+      <div class="matches-hdr">
+        <h2>Kindred</h2>
+        <span class="matches-count">3 connections</span>
+      </div>
+
+      <div class="new-matches-row">
+        <div class="nm-label">New Connections ✦</div>
+        <div class="nm-scroll">
+          <div class="nm-item" onclick="triggerMatch()">
+            <div class="nm-av-ring"><img src="https://i.pravatar.cc/56?img=5" alt="Sofia"><span class="nm-new-dot">✦</span></div>
+            <span>Sofia</span>
+          </div>
+          <div class="nm-item">
+            <div class="nm-av-ring"><img src="https://i.pravatar.cc/56?img=8" alt="Kenji"><span class="nm-new-dot">✦</span></div>
+            <span>Kenji</span>
+          </div>
+          <div class="nm-item-add">
+            <div class="nm-av-ring nm-empty">+3</div>
+            <span>More</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-list-section">
+        <div class="cl-label">Messages</div>
+        <div class="chat-list-item" onclick="showScreen('screen-chat')">
+          <div class="cli-av"><img src="https://i.pravatar.cc/52?img=5" alt="Sofia"><div class="cli-online"></div></div>
+          <div class="cli-body">
+            <div class="cli-name">Sofia M.</div>
+            <div class="cli-preview">"That's such a beautiful way to see it…"</div>
+          </div>
+          <div class="cli-meta"><div class="cli-time">2m</div><div class="cli-badge">2</div></div>
+        </div>
+        <div class="chat-list-item">
+          <div class="cli-av"><img src="https://i.pravatar.cc/52?img=8" alt="Kenji"></div>
+          <div class="cli-body">
+            <div class="cli-name">Kenji T.</div>
+            <div class="cli-preview">You: I never thought about it that way</div>
+          </div>
+          <div class="cli-meta"><div class="cli-time">1h</div></div>
+        </div>
+        <div class="chat-list-item">
+          <div class="cli-av"><img src="https://i.pravatar.cc/52?img=15" alt="Amara"></div>
+          <div class="cli-body">
+            <div class="cli-name">Amara O.</div>
+            <div class="cli-preview">"The market in the morning light is…"</div>
+          </div>
+          <div class="cli-meta"><div class="cli-time">3h</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-nav">
+      <button class="nav-btn" onclick="showScreen('screen-home')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Discover</span></button>
+      <button class="nav-btn" onclick="showScreen('screen-categories')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Decks</span></button>
+      <button class="nav-btn active" onclick="showScreen('screen-matches')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span>Kindred</span><div class="nav-badge">2</div></button>
+      <button class="nav-btn" onclick="showScreen('screen-profile')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>My Deck</span></button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       CHAT
+  ═══════════════════════════════════════════════ -->
+  <div class="screen" id="screen-chat">
+    <div class="chat-wrap">
+      <div class="chat-hdr">
+        <button class="back-btn" onclick="showScreen('screen-matches')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <div class="chat-user-pill" onclick="showScreen('screen-user-profile')">
+          <div class="cup-av-wrap"><img src="https://i.pravatar.cc/40?img=5" alt="Sofia"><div class="cup-online"></div></div>
+          <div><div class="cup-name">Sofia M.</div><div class="cup-status">Online · Barcelona</div></div>
+        </div>
+        <button class="chat-prof-btn" onclick="showScreen('screen-user-profile')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+      </div>
+
+      <!-- Match context snippet -->
+      <div class="match-ctx">
+        <span class="mctx-icon">✦</span>
+        <div class="mctx-body">
+          <small>You both picked this answer</small>
+          <span>"The smell of coffee in the morning…"</span>
+        </div>
+      </div>
+
+      <div class="chat-msgs" id="chat-msgs">
+        <div class="chat-day-sep">Today</div>
+
+        <div class="chat-row them">
+          <img src="https://i.pravatar.cc/30?img=5" class="msg-av" alt="Sofia">
+          <div class="msg-bbl">Hi! I loved your answer about coffee ☕ I feel the exact same way every morning.</div>
+        </div>
+
+        <div class="chat-row me">
+          <div class="msg-bbl">Right?? There's something almost magical about that first cup. Where do you usually have yours?</div>
+        </div>
+
+        <div class="chat-row them">
+          <img src="https://i.pravatar.cc/30?img=5" class="msg-av" alt="Sofia">
+          <div class="msg-bbl">My tiny balcony 🌿 I can see the whole street wake up. It's my favourite ritual.</div>
+        </div>
+
+        <div class="chat-row me">
+          <div class="msg-bbl">That sounds perfect. I have mine by the window, watching the rain if I'm lucky 🌧</div>
+        </div>
+
+        <div class="chat-row them">
+          <img src="https://i.pravatar.cc/30?img=5" class="msg-av" alt="Sofia">
+          <div class="msg-bbl">That's such a beautiful way to see it…</div>
+          <span class="msg-time">2m ago</span>
+        </div>
+      </div>
+
+      <div class="chat-input-bar">
+        <button class="chat-deck-ico" title="Share a card">🃏</button>
+        <input type="text" class="chat-input" id="chat-input" placeholder="Say something…">
+        <button class="chat-send" onclick="sendMsg()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       MY PROFILE
+  ═══════════════════════════════════════════════ -->
+  <div class="screen" id="screen-profile">
+    <div class="profile-wrap">
+      <div class="profile-hero">
+        <div class="ph-ring"><img src="https://i.pravatar.cc/88?img=12" alt="Me" class="ph-avatar"><div class="ph-ring-border"></div></div>
+        <h2 class="ph-name">Alex Chen</h2>
+        <p class="ph-loc">📍 Vancouver, Canada</p>
+        <div class="ph-stats">
+          <div class="phs-item"><div class="phs-n">47</div><div class="phs-l">Answers</div></div>
+          <div class="phs-div"></div>
+          <div class="phs-item"><div class="phs-n">12</div><div class="phs-l">Picks given</div></div>
+          <div class="phs-div"></div>
+          <div class="phs-item"><div class="phs-n">3</div><div class="phs-l">Kindred</div></div>
+        </div>
+      </div>
+
+      <div class="profile-body">
+        <!-- Mini deck scroll -->
+        <div class="deck-block">
+          <div class="db-hdr">
+            <span>☀️ Getting to Know You</span>
+            <span class="db-cnt">47 answers ✦</span>
+          </div>
+          <div class="mini-cards-row" id="my-mini-cards">
+            <!-- JS rendered -->
+          </div>
+        </div>
+
+        <!-- Premium upsell -->
+        <div class="prem-upsell" onclick="showScreen('screen-categories')">
+          <div class="pu-icon">🔮</div>
+          <div class="pu-text">
+            <strong>Unlock more decks</strong>
+            <span>Deepen your connections with premium categories</span>
+          </div>
+          <span class="pu-arrow">→</span>
+        </div>
+
+        <!-- Daily question -->
+        <div class="daily-block">
+          <div class="daily-hdr">
+            <span>🌙 Daily Question</span>
+            <span class="daily-timer" id="daily-timer">Resets in 18:32:00</span>
+          </div>
+          <div class="daily-card-preview">
+            <p class="daily-q">If you could relive one day exactly as it was, which would it be?</p>
+            <button class="btn-primary btn-sm" onclick="showScreen('screen-home')">Answer now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-nav">
+      <button class="nav-btn" onclick="showScreen('screen-home')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Discover</span></button>
+      <button class="nav-btn" onclick="showScreen('screen-categories')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Decks</span></button>
+      <button class="nav-btn" onclick="showScreen('screen-matches')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span>Kindred</span></button>
+      <button class="nav-btn active" onclick="showScreen('screen-profile')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>My Deck</span></button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       OTHER USER PROFILE
+  ═══════════════════════════════════════════════ -->
+  <div class="screen" id="screen-user-profile">
+    <div class="profile-wrap">
+      <div class="profile-hero">
+        <button class="back-btn back-abs" id="user-prof-back">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <div class="ph-ring"><img src="https://i.pravatar.cc/88?img=5" alt="Sofia" class="ph-avatar" id="up-avatar"><div class="ph-ring-border"></div></div>
+        <h2 class="ph-name" id="up-name">Sofia M.</h2>
+        <p class="ph-loc" id="up-loc">📍 Barcelona, Spain</p>
+        <div class="ph-stats">
+          <div class="phs-item"><div class="phs-n">63</div><div class="phs-l">Answers</div></div>
+          <div class="phs-div"></div>
+          <div class="phs-item"><div class="phs-n">8</div><div class="phs-l">Picked yours</div></div>
+          <div class="phs-div"></div>
+          <div class="phs-item kindred-stat"><div class="phs-n">✦</div><div class="phs-l">Kindred</div></div>
+        </div>
+      </div>
+
+      <div class="profile-body">
+        <div class="db-hdr">
+          <span>☀️ Getting to Know You</span>
+          <span class="db-cnt">63 answers</span>
+        </div>
+        <div class="user-answers-list" id="user-answers">
+          <!-- JS rendered -->
+        </div>
+      </div>
+
+      <div class="up-actions-bar">
+        <button class="btn-ghost" onclick="showScreen('screen-home')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          Pick an answer
+        </button>
+        <button class="btn-primary" onclick="showScreen('screen-chat')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Chat
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       CATEGORIES / DECKS
+  ═══════════════════════════════════════════════ -->
+  <div class="screen" id="screen-categories">
+    <div class="cats-wrap">
+      <div class="cats-hdr">
+        <h2>Your Decks</h2>
+        <p class="cats-sub">Each deck unlocks a new dimension of yourself — and new matches</p>
+      </div>
+
+      <!-- Free -->
+      <div class="cat-card cat-free">
+        <div class="catc-icon">☀️</div>
+        <div class="catc-info">
+          <div class="catc-name">Getting to Know You</div>
+          <div class="catc-meta">30 questions · Free</div>
+          <div class="catc-prog-row">
+            <div class="catc-bar"><div class="catc-fill" style="width:78%"></div></div>
+            <span>23/30</span>
+          </div>
+        </div>
+        <div class="catc-badge free-badge">Free</div>
+      </div>
+
+      <div class="prem-sec-hdr">
+        <span>✦ Premium Decks</span>
+        <span class="prem-sec-count">4 decks · unlock richer matches</span>
+      </div>
+
+      <div class="cat-card cat-locked" onclick="openPremModal('deep')">
+        <div class="catc-icon">🌙</div>
+        <div class="catc-info">
+          <div class="catc-name">Deep Thoughts</div>
+          <div class="catc-meta">30 questions · Philosophy &amp; meaning</div>
+          <div class="catc-preview-q">"What do you think happens after we die?"</div>
+        </div>
+        <div class="catc-badge prem-badge">$4.99</div>
+      </div>
+
+      <div class="cat-card cat-locked" onclick="openPremModal('adventure')">
+        <div class="catc-icon">🌿</div>
+        <div class="catc-info">
+          <div class="catc-name">Adventurer's Soul</div>
+          <div class="catc-meta">30 questions · Travel &amp; experience</div>
+          <div class="catc-preview-q">"Which place changed how you see the world?"</div>
+        </div>
+        <div class="catc-badge prem-badge">$4.99</div>
+      </div>
+
+      <div class="cat-card cat-locked" onclick="openPremModal('creative')">
+        <div class="catc-icon">✨</div>
+        <div class="catc-info">
+          <div class="catc-name">Creative Mind</div>
+          <div class="catc-meta">30 questions · Art &amp; imagination</div>
+          <div class="catc-preview-q">"If your life were a film, what genre would it be?"</div>
+        </div>
+        <div class="catc-badge prem-badge">$4.99</div>
+      </div>
+
+      <div class="cat-card cat-locked" onclick="openPremModal('philosophy')">
+        <div class="catc-icon">🔮</div>
+        <div class="catc-info">
+          <div class="catc-name">Life Philosophy</div>
+          <div class="catc-meta">30 questions · Values &amp; wisdom</div>
+          <div class="catc-preview-q">"What belief have you completely changed your mind on?"</div>
+        </div>
+        <div class="catc-badge prem-badge">$4.99</div>
+      </div>
+
+      <!-- Bundle card -->
+      <div class="bundle-card" onclick="openPremModal('bundle')">
+        <div class="bundle-glow"></div>
+        <div class="bundle-ico">👑</div>
+        <div class="bundle-info">
+          <strong>All Premium Decks</strong>
+          <span>Unlock everything · best for matches</span>
+          <div class="bundle-save-chip">Save 74%</div>
+        </div>
+        <button class="btn-primary btn-sm">$12.99/yr</button>
+      </div>
+    </div>
+
+    <div class="bottom-nav">
+      <button class="nav-btn" onclick="showScreen('screen-home')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Discover</span></button>
+      <button class="nav-btn active" onclick="showScreen('screen-categories')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Decks</span></button>
+      <button class="nav-btn" onclick="showScreen('screen-matches')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span>Kindred</span></button>
+      <button class="nav-btn" onclick="showScreen('screen-profile')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>My Deck</span></button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       PREMIUM MODAL
+  ═══════════════════════════════════════════════ -->
+  <div class="modal-backdrop hidden" id="prem-modal">
+    <div class="prem-modal-card">
+      <button class="modal-close-btn" onclick="closePremModal()">✕</button>
+      <div class="pm-icon" id="pm-icon">🌙</div>
+      <h3 class="pm-title" id="pm-title">Deep Thoughts</h3>
+      <p class="pm-desc" id="pm-desc">Explore questions about meaning, consciousness, and what truly matters. 30 carefully crafted questions to reveal a deeper side of yourself.</p>
+      <div class="pm-preview">
+        <div class="pm-qlabel">A few questions inside:</div>
+        <div class="pm-qlist" id="pm-qlist">
+          <div class="pm-qi">"What do you think happens after we die?"</div>
+          <div class="pm-qi">"When did you last feel truly free?"</div>
+          <div class="pm-qi">"What's the most important lesson loss has taught you?"</div>
+        </div>
+      </div>
+      <button class="btn-primary btn-full" id="pm-unlock-btn">Unlock for $4.99</button>
+      <div class="pm-or">or</div>
+      <button class="btn-ghost btn-full" onclick="closePremModal()">Get All Decks · $12.99/yr <span class="save-tag">Save 74%</span></button>
+    </div>
+  </div>
+
+</div><!-- /#app -->
+<script src="js/main.js"></script>
+</body>
+</html>
