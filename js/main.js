@@ -26,11 +26,7 @@ function showScreen(id) {
   if (id === 'screen-match-alert')   initMatchAlert();
 }
 
-// Wire back button on user profile to use history
-document.getElementById('user-prof-back').addEventListener('click', () => {
-  const prev = screenHistory[screenHistory.length - 2] || 'screen-home';
-  showScreen(prev);
-});
+// Wired inside init() below after DOM is confirmed ready
 
 // ── Auth ─────────────────────────────────────────────────────
 function setAuthMode(mode) {
@@ -197,17 +193,12 @@ function setupNext() {
     showScreen('screen-home');
   }
 }
-function setupSkip() {
-  if (setupIndex < setupQuestions.length - 1) {
-    setupIndex++;
-    renderSetupCard();
-  } else {
-    showScreen('screen-home');
-  }
-}
+// Skip advances the same as Next (no penalty)
+const setupSkip = setupNext;
 
 // ── Card Wheel (Home) ─────────────────────────────────────────
 const RADIUS     = 400;   // px — circle radius
+// NOTE: BOTTOM_OFF must match the CSS rule `.card-wheel { bottom: -330px }` in main.css
 const BOTTOM_OFF = 330;   // px — how far circle centre sits below wrapper bottom
 const ANGLE_STEP = 22;    // degrees between adjacent cards
 const VISIBLE    = [-3, -2, -1, 0, 1, 2, 3];
@@ -259,11 +250,11 @@ function createFanCard(card, offset) {
   el.innerHTML = `
     <div class="fc-corner tl">✦</div>
     <div class="fc-corner tr">✦</div>
-    <div class="fc-cat">${card.cat}</div>
-    <p class="fc-q">${card.question}</p>
+    <div class="fc-cat">${escHtml(card.cat)}</div>
+    <p class="fc-q">${escHtml(card.question)}</p>
     <div class="fc-av-row">
-      <img class="fc-av" src="${card.user.img}" alt="${card.user.name}" onerror="this.style.display='none'">
-      <span class="fc-name">${card.user.name}</span>
+      <img class="fc-av" src="${escHtml(card.user.img)}" alt="${escHtml(card.user.name)}">
+      <span class="fc-name">${escHtml(card.user.name)}</span>
     </div>
     <div class="fc-corner bl">✦</div>
     <div class="fc-corner br">✦</div>
@@ -347,7 +338,7 @@ function updateInfoPanel() {
   setEl('ai-q', card.question);
   setEl('ai-name', card.user.name);
   setEl('ai-loc', '📍 ' + card.user.loc);
-  setEl('ai-excerpt', `"${card.answer.substring(0, 90)}…"`);
+  setEl('ai-excerpt', `"${card.answer.length > 90 ? card.answer.substring(0, 90) + '…' : card.answer}"`);
 
   const avatar = document.getElementById('ai-avatar');
   if (avatar) { avatar.src = card.user.img; avatar.alt = card.user.name; }
@@ -479,12 +470,16 @@ function initUserProfileScreen() {
 
 // ── Daily Timer ───────────────────────────────────────────────
 let timerInterval = null;
+// Daily reset time (counts down from this point each time the profile is loaded)
+const DAILY_RESET_HOURS   = 18;
+const DAILY_RESET_MINUTES = 32;
+
 function startDailyTimer() {
   clearInterval(timerInterval);
   const el = document.getElementById('daily-timer');
   if (!el) return;
 
-  let seconds = 18 * 3600 + 32 * 60;
+  let seconds = DAILY_RESET_HOURS * 3600 + DAILY_RESET_MINUTES * 60;
   function tick() {
     const h = Math.floor(seconds / 3600);
     const m = Math.floor((seconds % 3600) / 60);
@@ -530,10 +525,7 @@ function sendMsg() {
   }, 1400 + Math.random() * 1000);
 }
 
-// Also send on Enter key
-document.getElementById('chat-input').addEventListener('keydown', e => {
-  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMsg(); }
-});
+// Also send on Enter key — wired in init() after DOM ready
 
 // ── Premium Modal ─────────────────────────────────────────────
 const premData = {
@@ -579,10 +571,7 @@ function closePremModal() {
   document.getElementById('prem-modal').classList.add('hidden');
 }
 
-// Close modal on backdrop click
-document.getElementById('prem-modal').addEventListener('click', e => {
-  if (e.target === e.currentTarget) closePremModal();
-});
+// Close modal on backdrop click — wired in init() after DOM ready
 
 // ── Toast ─────────────────────────────────────────────────────
 function showToast(msg) {
@@ -624,6 +613,29 @@ function hideHint() {
 
   // Set default auth mode
   setAuthMode('signup');
+
+  // Wire deferred event listeners now that DOM is confirmed loaded
+  const backBtn = document.getElementById('user-prof-back');
+  if (backBtn) {
+    backBtn.addEventListener('click', () => {
+      const prev = screenHistory[screenHistory.length - 2] || 'screen-home';
+      showScreen(prev);
+    });
+  }
+
+  const chatInput = document.getElementById('chat-input');
+  if (chatInput) {
+    chatInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMsg(); }
+    });
+  }
+
+  const premModal = document.getElementById('prem-modal');
+  if (premModal) {
+    premModal.addEventListener('click', e => {
+      if (e.target === e.currentTarget) closePremModal();
+    });
+  }
 
   // Show splash
   showScreen('screen-splash');
